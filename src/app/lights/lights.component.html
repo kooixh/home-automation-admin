@@ -1,0 +1,35 @@
+<div id="content">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-5">
+      <h1 class="h3 mb-0 text-gray-800">Lights</h1>
+    </div>
+
+
+    <div *ngIf="loaded" class="row">
+        <!-- Earnings (Monthly) Card Example -->
+        <div *ngFor="let light of lights" class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{light.alias}}</div>
+                  <div class="h5 mb-0 font-weight-bold">{{light.state.power | uppercase}}</div>
+                  <!-- Rounded switch -->
+                    <label class="switch">
+                      <input *ngIf="light.state.power === 'on'" type="checkbox" checked="checked"  (change)="offLight(light, $event)">
+                      <input *ngIf="light.state.power === 'off'" type="checkbox" (change)="onLight(light, $event)">
+                      <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-lightbulb fa-2x"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+</div>
